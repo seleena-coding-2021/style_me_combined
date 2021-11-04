@@ -1,0 +1,7 @@
+Flask
+requests
+configparser
+flask-sqlalchemy
+flask-login
+werkzeug
+pandas

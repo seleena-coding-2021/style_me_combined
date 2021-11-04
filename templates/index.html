@@ -1,0 +1,99 @@
+<!-- .repsonsive allows the page to expand and contract with the page -->
+
+<!-- Welcome -->
+<!DOCTYPE html>
+<html>
+  <head <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: white;
+      }
+
+      h1 {
+        color: rgb(11, 83, 148);
+        text-align: center;
+        font-family: "Dancing Script";
+        font-size: 60px;
+      }
+
+      p {
+        color: rgb(159, 197, 232);
+        text-align: center;
+        font-family: "Dancing Script";
+        font-size: 25px;
+      }
+
+      h2 {
+        color:rgb(11, 83, 148);
+        text-align: center;
+        font-family: "Dancing Script";
+        font-size: 25px;
+      }
+
+      input {
+        font-family: "Dancing Script"; /* font of my choosing */
+        font-size: 24px;
+        color: rgb(11, 83, 148); /* color of my choosing */
+        background-color: rgb(159, 197, 232); /* color of my choosing */
+
+        padding: 5px 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        text-align: center;
+        margin: 0px auto; /* allowing it to be in the middle of the page */
+        display:block;
+        }
+
+      label {
+        color: rgb(159, 197, 232);
+        text-align: center;
+        font-family: "Dancing Script";
+        font-size: 25px;
+        margin: 0px auto;
+        display:block;
+        }
+      
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to Style Me</h1>
+    <p>the weather app that styles you!</p>
+  </body>
+</html>
+
+<!-- login and password -->
+<div class="column is-4 is-offset-4"> 
+    <h2 class="title">Login</h2>
+    <div class="box">
+        <form method="POST" action="/login">
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                </div>
+            </div>
+            <div class="item">
+                <label for="rememberme"> <input type="checkbox" id="rememberme" name="rememberme"> Remember Me </label>
+            </div>
+              <input type="submit" value="login"/>
+        </form>
+    </div>
+</div>
+
+<!-- create login page button -->
+<!DOCTYPE html>
+<html>
+  <body>
+    <form action="./signup">
+      <input type="submit" value="create login page" />
+    </form>
+  </body>
+</html>

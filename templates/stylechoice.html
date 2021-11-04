@@ -1,0 +1,99 @@
+<!-- Question (only) -->
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+  <head <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: white;
+      }
+
+      h1 {
+        color: rgb(11, 83, 148);
+        text-align: center;
+        font-family: "Dancing Script";
+        font-size: 60px;
+      }
+      h2 {
+        color: rgb(11, 83, 148);
+        text-align: left;
+        font-family: "Dancing Script";
+        font-size: 30px;
+      }
+      p {
+        color: rgb(159, 197, 232);
+        text-align: center;
+        font-family: "Dancing Script";
+        font-size: 25px;
+      }
+    </style>
+  </head>
+</html>
+<style>
+  .responsive {
+    width: 100%;
+    height: auto;
+  }
+</style>
+
+<form action="./weather" method="post">
+  <h1>
+    What is your style sense?
+  </h1>
+  <p>
+    sporty, casual, or dressy
+  </p>
+  <!-- selected 'name=value' sent to server on Submit -->
+  <input type="radio" name="style" value="sporty" id="sporty" />
+  <h2>Sporty</h2>
+  <br />
+  <label for="sporty"
+    ><img
+      src="/static/images/sporty.jpg"
+      style="cursor: pointer; display: block;padding-bottom: 15px;"
+      alt="Submit"
+      class="responsive"
+  /></label>
+
+  <input type="radio" name="style" value="casual" id="casual" />
+  <h2>Casual</h2>
+  <br />
+  <label for="casual"
+    ><img
+      src="/static/images/casual.jpg"
+      style="cursor: pointer; display: block;padding-bottom: 15px;"
+      class="responsive"
+  /></label>
+
+  <input type="radio" name="style" value="dressy" id="dressy" />
+  <h2>Dressy</h2>
+  <br />
+  <label for="dressy"
+    ><img
+      src="/static/images/dressy.jpg"
+      style="display: inline-block;cursor: pointer;padding-bottom: 15px;"
+      class="responsive"
+  /></label>
+
+  <input type="submit" />
+  <style>
+    input {
+      font-family: "Dancing Script"; /* font of my choosing */
+      font-size: 24px;
+      color: rgb(11, 83, 148); /* color of my choosing */
+      background-color: rgb(159, 197, 232); /* color of my choosing */
+      padding: 5px 20px;
+      border-radius: 5px;
+      margin-top: 20px;
+      text-align: center; /* centering the text
+                              link: https://stackoverflow.com/questions/9971740/aligning-a-button-to-the-center */
+    }
+  </style>
+</form>
+{% endblock %}

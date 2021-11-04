@@ -1,0 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+#weatherResults {
+  background-color: rgb(
+    159,
+    197,
+    232
+  ); /* color of my choosing to match the theme of the weather display page */
+  font-family: "Dancing Script", cursive; /* font of my choosing */
+  font-size: 24px;
+  color: rgb(11, 83, 148);
+  padding: 20px;
+  display: inline-block;
+  text-align: center;
+  margin: 20px;
+  border-radius: 10px;
+}
+h3 {
+  color: rgb(11, 83, 148);
+  text-align: center;
+  font-family: "Dancing Script";
+  font-size: 30px;
+}
