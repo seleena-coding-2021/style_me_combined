@@ -2,6 +2,7 @@
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, render_template, request
+from flask_login import current_user
 import requests
 import configparser
 
@@ -15,10 +16,10 @@ def routes(app):
     # welcome page with login
     @app.route('/')
     def welcome():
-       return render_template("index.html")
+       return render_template("home.html")
     @app.route('/stylechoice')
     def choice():
-       return render_template("stylechoice.html")
+       return render_template("stylechoice.html", name=current_user.name)
 
     #asks for zipcode of the city you are in
     @app.route('/weather', methods=['POST'])
@@ -26,7 +27,7 @@ def routes(app):
         global style
         style = request.form['style']
         print(style)
-        return render_template('home.html')
+        return render_template('location.html', zipcode=current_user.zipcode)
 
     # returns the weather and what it feels like
     @app.route('/render_results', methods=['POST'])
@@ -108,7 +109,7 @@ def routes(app):
    
 
 
-# always goes last, but not needed in pythonanywhere
+#always goes last, but not needed in pythonanywhere
 #if __name__ == "__main__":
     #app.run(debug=False) # run the flask app on debug mode
     

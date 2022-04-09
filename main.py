@@ -1,5 +1,3 @@
-###############          Import packages         ###################
-
 from flask import Blueprint, render_template, flash
 from flask_login import login_required, current_user
 from __init__ import create_app, db
@@ -18,8 +16,22 @@ def index():
 @login_required #requires you to login before you can do anything
 def profile():
     #return 'profile' #returning the string 'profile'
-    return render_template('profile.html', name=current_user.name)
+    return render_template('profile.html', name=current_user.name, email=current_user.email, zipcode=current_user.zipcode, birthday=current_user.birthday)
 
+@main.route('/name_edit')
+@login_required
+def name_edit():
+   return render_template('editname.html')
+
+@main.route('/zipcode_edit')
+@login_required
+def zipcode_edit():
+   return render_template('zipcodeedit.html')
+
+@main.route('/birthday_edit')
+@login_required
+def birthday_edit():
+   return render_template('birthdayedit.html')
 
 app = create_app() # we initialize our flask app using the            
                    #__init__.py function

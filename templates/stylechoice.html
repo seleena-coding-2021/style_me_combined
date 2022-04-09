@@ -32,6 +32,14 @@
         font-family: "Dancing Script";
         font-size: 25px;
       }
+
+      h3 {
+        color: rgb(11, 83, 148);
+        text-align: left;
+        font-family: "Dancing Script";
+        font-size: 25px;
+      }
+
     </style>
   </head>
 </html>
@@ -43,12 +51,16 @@
 </style>
 
 <form action="./weather" method="post">
+  <h3>
+    Welcome, {{name}}
+  </h3>
   <h1>
     What is your style sense?
   </h1>
   <p>
     sporty, casual, or dressy
   </p>
+  
   <!-- selected 'name=value' sent to server on Submit -->
   <input type="radio" name="style" value="sporty" id="sporty" />
   <h2>Sporty</h2>

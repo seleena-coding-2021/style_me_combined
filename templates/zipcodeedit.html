@@ -63,37 +63,16 @@
 
 
     <div class="column is-4 is-offset-4">
-        <h1 class="title">Sign Up</h1>
+        <h1 class="title">Edit Zipcode</h1>
         <div class="box">
-            <form method="POST" action="/signup">
+            <form method="POST" action="/zipcode_edit">
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="email" name="email" placeholder="Email" autofocus="" required>
+                        <input class="input is-large" type="text" name="zipcode" placeholder="Zipcode" autofocus="">
                     </div>
                 </div>
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-large" type="text" name="name" placeholder="Name" autofocus="" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-large" type="password" name="password" placeholder="Password" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-large" type="text" name="zipcode" placeholder="Zipcode" autofocus="" required>
-                    </div>
-                </div>
-                <div class="field">
-                    <div class="control">
-                        <input class="input is-large" type="date" name="birthday" placeholder="Birthday" autofocus="">
-                    </div>
-                </div>
-                <button class="button is-block is-info is-large is-fullwidth">Sign Up</button>
+                <button class="button is-block is-info is-large is-fullwidth">Reset</button>
             </form>
         </div>
     </div> 
 </html>
-
