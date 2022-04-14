@@ -56,6 +56,39 @@ def signup(): # define the sign up function
         db.session.commit()
         return redirect(url_for('welcome'))
 
+@auth.route('/name_edit', methods=['GET', 'POST'])
+@login_required
+def name_edit():
+    if request.method=='GET':
+        return render_template('editname.html', name=current_user.name)
+    else:
+        user=User.query.filter_by(email=current_user.email).first()
+        user.name= request.form.get('name')
+        db.session.commit()
+    return redirect(url_for('main.profile'))
+
+@auth.route('/zipcode_edit', methods=['GET', 'POST'])
+@login_required
+def zipcode_edit():
+    if request.method=='GET':
+        return render_template('zipcodeedit.html', zipcode=current_user.zipcode)
+    else:
+        user=User.query.filter_by(email=current_user.email).first()
+        user.zipcode= request.form.get('zipcode')
+        db.session.commit()
+    return redirect(url_for('main.profile'))
+
+@auth.route('/birthday_edit', methods=['GET', 'POST'])
+@login_required
+def birthday_edit():
+    if request.method=='GET':
+        return render_template('birthdayedit.html', birthday=current_user.birthday)
+    else:
+        user=User.query.filter_by(email=current_user.email).first()
+        user.birthday= request.form.get('birthday')
+        db.session.commit()
+    return redirect(url_for('main.profile'))
+        
 @auth.route('/logout') # define logout path
 @login_required
 def logout(): #define the logout function

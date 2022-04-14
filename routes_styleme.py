@@ -17,6 +17,7 @@ def routes(app):
     @app.route('/')
     def welcome():
        return render_template("home.html")
+    
     @app.route('/stylechoice')
     def choice():
        return render_template("stylechoice.html", name=current_user.name)
@@ -32,7 +33,8 @@ def routes(app):
     # returns the weather and what it feels like
     @app.route('/render_results', methods=['POST'])
     def render_results():
-        zip_code = request.form['zipCode']
+        zip_code=current_user.zipcode
+        #zip_code = request.form['zipCode']
         print("Zip=",zip_code) #new code: not apart of the original
         # api_key = get_api_key()
         api_key = "f740a1fa30a15499826774d4c6ae2099"
