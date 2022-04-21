@@ -52,27 +52,16 @@
 
 <form action="./render_results" method="post">
   <h3>
-    Welcome, {{name}}
+    {{greet}}, {{name}}
   </h3>
   <h1>
     What is your style sense?
   </h1>
   <p>
-    sporty, casual, or dressy
+    casual, dressy, or sporty
   </p>
   
   <!-- selected 'name=value' sent to server on Submit -->
-  <input type="radio" name="style" value="sporty" id="sporty" />
-  <h2>Sporty</h2>
-  <br />
-  <label for="sporty"
-    ><img
-      src="/static/images/sporty.jpg"
-      style="cursor: pointer; display: block;padding-bottom: 15px;"
-      alt="Submit"
-      class="responsive"
-  /></label>
-
   <input type="radio" name="style" value="casual" id="casual" />
   <h2>Casual</h2>
   <br />
@@ -90,6 +79,17 @@
     ><img
       src="/static/images/dressy.jpg"
       style="display: inline-block;cursor: pointer;padding-bottom: 15px;"
+      class="responsive"
+  /></label>
+
+  <input type="radio" name="style" value="sporty" id="sporty" />
+  <h2>Sporty</h2>
+  <br />
+  <label for="sporty"
+    ><img
+      src="/static/images/sporty.jpg"
+      style="cursor: pointer; display: block;padding-bottom: 15px;"
+      alt="Submit"
       class="responsive"
   /></label>
 

@@ -5,12 +5,22 @@ from flask import Flask, render_template, request
 from flask_login import current_user
 import requests
 import configparser
+import datetime
 
 #app = Flask(__name__) ~ init is creating the app
 #app.debug = True #don't like it
 
 #define style setting
 style = "sporty"    #casual, sporty, dressy
+
+now = datetime.datetime.now()
+hour = now.hour
+if hour < 12:
+    greeting = "Good Morning"
+elif hour < 18:
+    greeting = "Good Afternoon"
+else:
+    greeting = "Good Night"
 
 def routes(app):
     # welcome page with login
@@ -20,7 +30,7 @@ def routes(app):
     
     @app.route('/stylechoice')
     def choice():
-       return render_template("stylechoice.html", name=current_user.name)
+       return render_template("stylechoice.html", name=current_user.name, greet=greeting)
 
     #asks for zipcode of the city you are in
     @app.route('/weather', methods=['POST'])
@@ -33,6 +43,8 @@ def routes(app):
     # returns the weather and what it feels like
     @app.route('/render_results', methods=['POST'])
     def render_results():
+        style = request.form['style']
+        print(style)
         zip_code=current_user.zipcode
         #zip_code = request.form['zipCode']
         print("Zip=",zip_code) #new code: not apart of the original
@@ -107,8 +119,6 @@ def routes(app):
        r = requests.get(api_url)
        print(r)   #new code: not apart of the original
        return r.json()
-
-   
 
 
 #always goes last, but not needed in pythonanywhere
