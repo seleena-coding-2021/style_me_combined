@@ -84,9 +84,21 @@
                 <label for="rememberme"> <input type="checkbox" id="rememberme" name="rememberme"> Remember Me </label>
             </div>
               <input type="submit" value="login"/>
+              <input type="hidden" name="hour" id="demo"/>
         </form>
     </div>
 </div>
+
+<!-- <p>getHours() returns the hour (from 0 to 23) of a date:</p>
+<p id="hour" name="hour"></p>  -->
+
+<script type="text/javascript">
+  const d = new Date();
+  let hr = d.getHours();
+  document.getElementById("demo").value = hr;
+</script> 
+
+
 
 <!-- create login page button -->
 <!DOCTYPE html>

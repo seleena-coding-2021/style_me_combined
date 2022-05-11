@@ -1,4 +1,3 @@
-
 # A very simple Flask Hello World app for you to get started with...
 
 from flask import Flask, render_template, request
@@ -6,6 +5,7 @@ from flask_login import current_user
 import requests
 import configparser
 import datetime
+#from auth import hour
 
 #app = Flask(__name__) ~ init is creating the app
 #app.debug = True #don't like it
@@ -13,14 +13,6 @@ import datetime
 #define style setting
 style = "sporty"    #casual, sporty, dressy
 
-now = datetime.datetime.now()
-hour = now.hour
-if hour < 12:
-    greeting = "Good Morning"
-elif hour < 18:
-    greeting = "Good Afternoon"
-else:
-    greeting = "Good Night"
 
 def routes(app):
     # welcome page with login
@@ -30,7 +22,15 @@ def routes(app):
     
     @app.route('/stylechoice')
     def choice():
-       return render_template("stylechoice.html", name=current_user.name, greet=greeting)
+        hour = request.args.get('hour')
+        hour = int(hour)
+        if hour < 12:
+            greeting = "Good Morning"
+        elif hour < 18:
+            greeting = "Good Afternoon"
+        else:
+            greeting = "Good Night"
+        return render_template("stylechoice.html", name=current_user.name, zipcode=current_user.zipcode, greet=greeting)
 
     #asks for zipcode of the city you are in
     @app.route('/weather', methods=['POST'])

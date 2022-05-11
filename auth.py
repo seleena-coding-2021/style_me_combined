@@ -1,6 +1,6 @@
 ######################          Import packages      ###################################
 
-from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask import Blueprint, render_template, redirect, url_for, request, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from models import User
 from flask_login import login_user, logout_user, login_required, current_user
@@ -18,6 +18,9 @@ def login(): # define login page fucntion
         password = request.form.get('password')
         remember = True if request.form.get('remember') else False
         user = User.query.filter_by(email=email).first()
+        hour = request.form.get('hour')
+        print("the time is ... ", hour)
+        print("the type of hour is", type(hour))
         # check if the user actually exists
         # take the user-supplied password, hash it, and compare it to the hashed password in the database
         if not user:
@@ -29,7 +32,7 @@ def login(): # define login page fucntion
         # if the above check passes, then we know the user has the right credentials
         login_user(user, remember=remember)
         #return redirect(url_for('main.profile'))
-        return redirect(url_for('choice'))
+        return redirect(url_for('choice', hour = hour))
 
 @auth.route('/signup', methods=['GET', 'POST'])# we define the sign up path
 def signup(): # define the sign up function
