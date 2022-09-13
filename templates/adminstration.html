@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+   <body>
+   
+      <h3>Set up the images to the database</h3>
+      <hr/>
+      
+      {%- for category, message in get_flashed_messages(with_categories = true) %}
+         <div class = "alert alert-danger">
+            {{ message }}
+         </div>
+      {%- endfor %}
+      
+      <form action = "{{ request.path }}" method = "post">
+         <label for = "Image_Name">Image_Name</label><br>
+         <input type = "text" name = "Image_Name" placeholder = "Image_Name" /><br>
+
+         <label for = "stylechoice">StyleChoice</label><br>
+         <select name = "stylechoice" id="stylechoice">
+            <option value = "casual">Casual</option>
+            <option value = "dressy">Dressy</option>
+            <option value = "sporty">Sporty</option>
+         </select> <br>
+
+         <label for = "Temp_Range">Temp_Range</label><br>
+         <select name = "Temp_Range" id="Temp_Range">
+            <option value = "<=40">Less than 40ºF</option>
+            <option value = ">40 and <=60">Greater than 40ºF, but less than 60ºF</option>
+            <option value = ">60 and <80">Greater than 60ºF, but less than 80ºF </option>
+            <option value = ">80"> Greater than 80ºF</option>
+         </select>
+
+         <input type = "submit" value = "Submit" />
+      </form>
+
+   
+   </body>
+</html>

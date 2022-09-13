@@ -1,26 +1,13 @@
-
 # A very simple Flask Hello World app for you to get started with...
 
-from flask import Flask, render_template, request
+from flask import Blueprint, Flask, render_template, request, flash
 from flask_login import current_user
 import requests
 import configparser
-import datetime
-
-#app = Flask(__name__) ~ init is creating the app
-#app.debug = True #don't like it
+from app import app, db
 
 #define style setting
 style = "sporty"    #casual, sporty, dressy
-
-now = datetime.datetime.now()
-hour = now.hour
-if hour < 12:
-    greeting = "Good Morning"
-elif hour < 18:
-    greeting = "Good Afternoon"
-else:
-    greeting = "Good Night"
 
 def routes(app):
     # welcome page with login
@@ -30,7 +17,15 @@ def routes(app):
     
     @app.route('/stylechoice')
     def choice():
-       return render_template("stylechoice.html", name=current_user.name, greet=greeting)
+        hour = request.args.get('hour')
+        hour = int(hour)
+        if hour < 12:                   #https://stackoverflow.com/questions/32032504/python-time-greeting-program
+            greeting = "Good Morning"
+        elif hour < 18:
+            greeting = "Good Afternoon"
+        else:
+            greeting = "Good Night"
+        return render_template("stylechoice.html", name=current_user.name, zipcode=current_user.zipcode, greet=greeting)
 
     #asks for zipcode of the city you are in
     @app.route('/weather', methods=['POST'])
@@ -61,9 +56,6 @@ def routes(app):
         print ("weather is" + weather)
         location = data["name"] # name of the city where the user is
         print ("this is the location" + location)
-  #return render_template('results.html',
-                           #location=location, temp=temp,
-                           #feels_like=feels_like, weather=weather)
 
         temp = float(temp)  # changing temp from an string into a float(intergers with decimals)
         print(style + " as in results")
@@ -107,11 +99,11 @@ def routes(app):
               return render_template('dressy_summer.html', location=location, temp=temp,
                              feels_like=feels_like, weather=weather)
 
-    def get_api_key():
-       config = configparser.ConfigParser()
-       config.read('config.ini')
-       print ("config=", config.sections())
-       return config['openweathermap']['api']
+    #def get_api_key():
+       #config = configparser.ConfigParser()
+       #config.read('config.ini')
+       #print ("config=", config.sections())
+       #return config['openweathermap']['api']
 
     def get_weather_results(zip_code, api_key):
        api_url = "https://api.openweathermap.org/data/2.5/weather?zip={}&units=imperial&appid={}".format(zip_code, api_key)
@@ -119,10 +111,5 @@ def routes(app):
        r = requests.get(api_url)
        print(r)   #new code: not apart of the original
        return r.json()
-
-
-#always goes last, but not needed in pythonanywhere
-#if __name__ == "__main__":
-    #app.run(debug=False) # run the flask app on debug mode
     
 

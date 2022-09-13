@@ -4,4 +4,5 @@ configparser
 flask-sqlalchemy
 flask-login
 werkzeug
-pandas
+Flask-Migrate
+python-dotenv
