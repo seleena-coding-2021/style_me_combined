@@ -16,6 +16,11 @@ class Style(db.Model):
     image_name = db.Column(db.String(100), unique=True, nullable=False)
     stylechoice = db.Column(db.String(100))
     season = db.Column(db.String(100))
-    #age_range = db.Column(db.String(100))
-    #designer = db.Column(db.String(100))
-    
+    #age_range = db.Column(db.String(100))  #should this be left out again? (10/22)
+    #designer = db.Column(db.String(100))   #should this be left out again (10/22)
+
+
+# whenever things are added to this py file make sure: (10/22)
+    # flask db stamp head
+    # flask db migrate -m ""     (10/22)
+    # flask db upgrade        (10/22)
